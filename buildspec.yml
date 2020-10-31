@@ -1,0 +1,11 @@
+version: 0.2
+
+phases:
+    build:
+        commands:
+            - echo Building the Docker image...
+            - docker build -t rk57rg/docker-react -f Dockerfile.dev .
+    post-build:
+        commands:
+            - echo running the tests
+            - docker run rk57rg/docker-react npm run test -- --coverage
